@@ -38,5 +38,5 @@ public class Addresses extends BaseEntityIdentifier{
     private String apartment;
 
     @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
-    private Collection<Users> user;
+    private Collection<Users> addresses;
 }

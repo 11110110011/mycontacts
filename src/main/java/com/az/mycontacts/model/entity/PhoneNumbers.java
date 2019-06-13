@@ -24,6 +24,6 @@ public class PhoneNumbers extends BaseEntityIdentifier{
     private String phoneNumber;
 
     @OneToMany(mappedBy = "phone", fetch = FetchType.EAGER)
-    private Collection<Users> phoneList;
+    private Collection<Users> phones;
 
 }

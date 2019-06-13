@@ -26,12 +26,11 @@ public class Users extends BaseEntityIdentifier {
     private String email;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_PHONE")
     private PhoneNumbers phone;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-//    @JoinColumn(name = "USER_ADDRESS")
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ADDRESS")
     private Addresses address;
 
 }
