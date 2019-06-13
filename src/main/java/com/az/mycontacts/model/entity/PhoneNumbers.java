@@ -1,26 +1,29 @@
 package com.az.mycontacts.model.entity;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
-@Data
 @Table(name = "PHONE_NUMBERS")
-public class PhoneNumbers {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true)
-    private long id;
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+public class PhoneNumbers extends BaseEntityIdentifier{
 
     @CreatedDate
     @Column(name = "CREATED_DATE", updatable = false)
     private LocalDateTime createdDate;
 
-    @Column(name = "PHONE_NUMBER", length = 20)
+    @Column(name = "PHONE_NO")
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "phone", fetch = FetchType.EAGER)
+    private Collection<Users> phoneList;
 
 }

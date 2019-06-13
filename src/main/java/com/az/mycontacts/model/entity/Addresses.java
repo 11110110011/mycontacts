@@ -1,20 +1,22 @@
 package com.az.mycontacts.model.entity;
 
-import lombok.Data;
+import com.az.mycontacts.model.dto.Address;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Data
 @Table(name = "ADDRESSES")
-public class Addresses {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true)
-    private long id;
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+public class Addresses extends BaseEntityIdentifier{
 
     @CreatedDate
     @Column(name = "CREATED_DATE", updatable = false)
@@ -34,4 +36,7 @@ public class Addresses {
 
     @Column(name = "APARTMENT", length = 5)
     private String apartment;
+
+    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
+    private Collection<Users> user;
 }
