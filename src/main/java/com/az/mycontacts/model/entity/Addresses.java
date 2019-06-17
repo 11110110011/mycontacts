@@ -11,16 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "ADDRESSES")
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@Builder
+@Data
+//@Builder
 public class Addresses extends BaseEntityIdentifier{
-
-    @CreatedDate
-    @Column(name = "CREATED_DATE", updatable = false)
-    private LocalDateTime createdDate;
 
     @Column(name = "COUNTRY", length = 50)
     private String country;
@@ -37,6 +30,7 @@ public class Addresses extends BaseEntityIdentifier{
     @Column(name = "APARTMENT", length = 5)
     private String apartment;
 
-    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
-    private Collection<Users> addresses;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    Users user;
 }

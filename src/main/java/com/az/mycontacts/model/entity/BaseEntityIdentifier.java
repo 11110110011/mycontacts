@@ -2,20 +2,26 @@ package com.az.mycontacts.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @MappedSuperclass
-@ToString
 public abstract class BaseEntityIdentifier {
 
+
+
+
     @Id
-    @GeneratedValue
-    @Getter
-    @Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false, unique = true)
     private Long id;
+
+    @CreatedDate
+    @Column(name = "CREATED_DATE", updatable = false, nullable = false)
+    private LocalDateTime createdOn;
 
 }

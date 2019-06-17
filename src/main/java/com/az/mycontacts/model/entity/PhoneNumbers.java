@@ -9,21 +9,19 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "PHONE_NUMBERS")
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Getter
+//@Setter
+@Data
 @Builder
 public class PhoneNumbers extends BaseEntityIdentifier{
-
-    @CreatedDate
-    @Column(name = "CREATED_DATE", updatable = false)
-    private LocalDateTime createdDate;
 
     @Column(name = "PHONE_NO")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "phone", fetch = FetchType.EAGER)
-    private Collection<Users> phones;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    Users user;
 
 }

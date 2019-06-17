@@ -1,11 +1,12 @@
 package com.az.mycontacts.model.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class Phones {
-
-    private List<String> phones;
+@Builder
+public class Phone {
+    private String phone;
 }
