@@ -1,12 +1,14 @@
 package com.az.mycontacts.model.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class Address {
+public class AddressDTO {
 
     private String country;
     private String city;

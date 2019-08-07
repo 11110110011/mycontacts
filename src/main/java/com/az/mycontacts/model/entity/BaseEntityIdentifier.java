@@ -1,6 +1,8 @@
 package com.az.mycontacts.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -9,11 +11,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntityIdentifier {
-
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

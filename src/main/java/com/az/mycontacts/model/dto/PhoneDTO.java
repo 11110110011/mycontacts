@@ -1,12 +1,14 @@
 package com.az.mycontacts.model.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class Phone {
+public class PhoneDTO {
     private String phone;
 }

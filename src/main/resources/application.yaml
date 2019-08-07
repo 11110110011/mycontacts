@@ -6,7 +6,7 @@ spring:
     password: 1234567
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
@@ -19,6 +19,5 @@ spring:
           new_generator_mappings: true
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
-  flyway:
-    enabled: false
+
 

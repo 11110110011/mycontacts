@@ -5,28 +5,33 @@ import com.az.mycontacts.repository.PhoneNumRepository;
 import com.az.mycontacts.service.PhoneServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collection;
+import java.util.List;
 
 @Service
 public class PhoneServicesImpl implements PhoneServices {
 
-    private PhoneNumRepository numRepository;
+
+    private PhoneNumRepository phoneNumRepository;
 
     @Autowired
-    PhoneServicesImpl(PhoneNumRepository numRepository){
-        this.numRepository = numRepository;
+    PhoneServicesImpl(PhoneNumRepository phoneNumRepository){
+        this.phoneNumRepository = phoneNumRepository;
+    }
+
+
+    @Override
+    public List<PhoneNumbers> findPhonesByContactId(Long contactId) {
+        List<PhoneNumbers> phones = phoneNumRepository.findPhoneNumbersByContact_Id(contactId);
+
+//        List<PhoneNumbers> phones = phoneNumRepository.findPhoneNumbersByContact_Id(contactId);
+        return phones;
     }
 
     @Override
-    public PhoneNumbers findPhone(Long id) {
-        return null;
-    }
-
-    @Override
-    @Transactional
     public void addPhone(Long id, String phone) {
 
-//        numRepository.save("12345")
     }
 
     @Override

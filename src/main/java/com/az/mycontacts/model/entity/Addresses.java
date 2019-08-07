@@ -1,18 +1,17 @@
 package com.az.mycontacts.model.entity;
 
-import com.az.mycontacts.model.dto.Address;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "ADDRESSES")
-@Data
-//@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class Addresses extends BaseEntityIdentifier{
 
     @Column(name = "COUNTRY", length = 50)
@@ -30,7 +29,8 @@ public class Addresses extends BaseEntityIdentifier{
     @Column(name = "APARTMENT", length = 5)
     private String apartment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    Users user;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CONTACT_ID")
+    Contact contact;
 }
